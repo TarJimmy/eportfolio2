@@ -1,0 +1,20 @@
+
+  "mode": {
+    "port": "4200",
+    "env": "test",
+    "servercode": "local",
+    "lang": "fr"
+  },
+  "app": {
+    "name": "Eportfolio",
+    "baseUrl": ""
+  },
+  "db": {
+    "name": "eportfolio",
+    "user": "admin",
+    "password": "HsJCZ7nwD6Q0qPF0"
+  },
+  "overwrite": {
+    "locales": ""
+  }
+}
