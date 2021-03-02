@@ -1,0 +1,104 @@
+@import "../../../mixin";
+
+.page-skills {
+    .box {
+        background-color: transparent;
+        perspective: 1000px;
+        margin: 15px 30px;
+        width: min-content;
+        height: min-content;
+        .box-inner {
+            position: relative;
+            width: 110px;
+            height: 130px;
+            text-align: center;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            border-radius: 15px;
+            img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+        &:hover .box-inner {
+            transform: rotateY(180deg);
+        }
+
+        .box-front, .box-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+        .box-front {
+            border-radius: 15px;
+            background-color: @lightGrey;
+            color: @halfDarkerGrey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box-back {
+            border-radius: 30px;
+            background-color: @halfDarkerGrey;
+            padding: 20px 4px;
+            color: white;
+            transform: rotateY(180deg);
+            h4 {
+                font-size: 20px;
+                text-transform: capitalize;
+            }
+            span {
+                font-size: 15px;
+                cursor: default;
+            }
+        }
+    }
+
+    .group-skill {
+        width: 800px;
+        height: auto;
+        position: relative;
+        padding: 25px;
+        border-radius: 25px;
+        background-color: @lightGrey;
+        margin: 50px auto;
+        h2 {
+            font-size: 30px;
+            color: @halfDarkerGrey;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .zone-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        &.web {
+            #left, #right {
+                width: 50%;
+
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+
+        .skill-body {
+            display: flex;
+            flex-wrap: wrap;
+
+            #line-separator {
+                position: absolute;
+                left: 50%;
+                top: 15%;
+                transform: translateX(-50%);
+                border-style: dashed;
+                height: 80%;
+            }
+        }
+    }
+}
+

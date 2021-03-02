@@ -1,0 +1,41 @@
+<header>
+    <nav class="navbar navbar-expand-xl navbar-light">
+        <a class="navbar-brand" href="#">
+            <span>Tardy Jimmy</span>
+            <span>{{Locale.DeveloperFullStack}}</span>
+        </a>
+
+        <select (change)="selectChangeLang($event)">
+            <option [title]="Locale.French" [value]="Locale.fr" [selected]="langIsSelect(Locale.fr)">{{Locale.fr}}</option>
+            <option [title]="Locale.English" [value]="Locale.en" [selected]="langIsSelect(Locale.en)">{{Locale.en}}</option>
+        </select>
+
+        <button (click)="onToogleMenu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fas fa-angle-double-down"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li routerLinkActive="active" class="nav-item" title="Expérience Professionnel">
+                    <i class="fas fa-briefcase"></i>
+                    <a class="nav-link" routerLink="experience-professionnel">{{Locale.ProExperience}}</a>
+                </li>
+                <li routerLinkActive="active" class="nav-item" title="{{Locale.Skills}}">
+                    <i class="fas fa-address-card"></i>
+                    <a class="nav-link" routerLink="skills">{{Locale.Skills}}</a>
+                </li>
+                <li routerLinkActive="active" class="nav-item" title="{{Locale.Projects}">
+                    <i class="fas fa-laptop-code"></i>
+                    <a class="nav-link not-ready" routerLink="#">{{Locale.Projects}}</a>
+                </li>
+                <li routerLinkActive="active" class="nav-item" title="{{Locale.DiplQualificationsmes}}">
+                    <i class="fas fa-graduation-cap"></i>
+                    <a class="nav-link" routerLink="formations">{{Locale.Qualifications}}</a>
+                </li>
+                <li routerLinkActive="active" class="nav-item" title="{{Locale.About}}">
+                    <i class="fas fa-user"></i>
+                    <a class="nav-link not-ready" routerLink="#">{{Locale.About}}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

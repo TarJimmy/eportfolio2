@@ -1,0 +1,65 @@
+<div *ngIf="!loading" class="page page-experience-pro">
+    <h1 class="page-title">
+        {{Locale.ProfessionalExperience}}
+    </h1>
+    <section class="btn-group-mode">
+        <a class="btn-choice-mode" [ngModel]="modeTimeline" [@selection]="modeTimeline ? 'select' : 'no-select'" (click)="selectChoice('timeline')">
+            <span class="text">{{Locale.TimelineMode}}</span>
+            <span class="line -right"></span>
+            <span class="line -top"></span>
+            <span class="line -left"></span>
+            <span class="line -bottom"></span>
+        </a>
+        <a class="btn-choice-mode" [ngModel]="modeGraph" [@selection]="modeGraph ? 'select' : 'no-select'" (click)="selectChoice('graph')">
+            <span class="text">{{Locale.GraphMode}}</span>
+            <span class="line -right"></span>
+            <span class="line -top"></span>
+            <span class="line -left"></span>
+            <span class="line -bottom"></span>
+        </a>
+    </section>
+    <section *ngIf="modeTimeline" class="experience-timeline">
+        <div [ngStyle]="{'height' : (experienceProTimeline.length * 180) + 'px'}" class="line-scroll"></div>
+        <article class="experience-body {{getColor(experience.companyId.shortMetier)}}"
+                 [ngClass]="{'left' : isOdd}"
+                 *ngFor="let experience of experienceProTimeline; let index = index; let isOdd = odd">
+            <div class="experience-info">
+                <div class="experience-company">
+                    <a href="companies">{{experience.companyId.title}} - {{experience.typeContract}}</a>
+                    <img class="experience-info-logo" *ngIf="experience.companyId.logo" [src]="experience.companyId.logo">
+                </div>
+                <p class="experience-description">
+                    {{experience.description}}
+                </p>
+                <div class="experience-date">
+                    {{experience.fullDate}}
+                </div>
+            </div>
+            <div class="experience-bottom">
+                {{experience.title}}
+            </div>
+            <div class="experience-point" [ngClass]="isOdd ? 'right' : 'left'">
+                <i class="fas fa-tractor" *ngIf="experience.companyId.shortMetier == 'Agriculture'"></i>
+                <i class="fas fa-laptop-code" *ngIf="experience.companyId.shortMetier == 'Programmation'"></i>
+                <i class="fas fa-car" *ngIf="experience.companyId.shortMetier == 'Concessionnaire'"></i>
+                <i class="fas fa-industry" *ngIf="experience.companyId.shortMetier == 'Métallurgie'"></i>
+            </div>
+        </article>
+    </section>
+    <section *ngIf="modeGraph" class="experience-graph">
+        <div class="bar-graph" [ngClass]="screen.width > 850 ? 'bar-horizontal' : 'bar-vertical'">
+            <div class="bar-content" *ngFor="let experience of experienceProGraph;">
+                <span class="theme" [title]="experience.description" [textContent]="Locale[experience.typeJob]"></span>
+                <div class="bar" [ngStyle]="screen.width > 850 ? {'max-width' : 'calc(' + experience.pourcent + '% * 0.70)'} : {'max-height' : 'calc(' + experience.pourcent + '% * 0.70)'}" [ngClass]="experience.typeJob">
+                    <i class="fas fa-sun" *ngIf="experience.typeJob == 'summer'"></i>
+                    <i class="fas fa-laptop-code" *ngIf="experience.typeJob == 'webProgramming'"></i>
+                    <span class="text" *ngIf="experience.pourcent > 25" [title]="experience.exactDate" [textContent]="experience.fullDate"></span>
+                </div>
+                <div class="text" *ngIf="experience.pourcent <= 25" [title]="experience.exactDate" [textContent]="experience.fullDate"></div>
+            </div>
+        </div>
+    </section>
+</div>
+<div *ngIf="loading" class="loading">
+    {{Locale.loading}}
+</div>

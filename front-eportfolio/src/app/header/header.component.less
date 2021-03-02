@@ -1,0 +1,132 @@
+@import "../mixin";
+
+header {
+    background-color: @lightGrey;
+    width: 100vw;
+    .navbar {
+        .navbar-toggler {
+            border: none;
+            outline: none;
+            svg.open {
+                transform: rotate(180deg);
+            }
+        }
+
+        a.navbar-brand {
+            color: @mainBlue;
+            font-weight: 700;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            span:first-child {
+                font-size: 20px;
+            }
+            span:last-child {
+                font-size: 15px;
+            }
+            span {
+                letter-spacing: 0.1em;
+            }
+        }
+
+        .navbar-collapse {
+            justify-content: flex-end;
+            ul.navbar-nav {
+                .nav-item {
+                    margin: 0 35px;
+                    padding: 3px 15px;
+                    display: flex;
+                    border-radius: 15px;
+                    -webkit-transition: background-color 0.5s ease-out;
+                    -moz-transition: background-color 0.5s ease-out;
+                    -o-transition: background-color 0.5s ease-out;
+                    transition: background-color 0.5s ease-out;
+                    &:hover {
+                        background-color: @normalGrey;
+                        &, a {
+                            color: @halfDarkerGrey;
+                        }
+                    }
+
+                    &, a {
+                        letter-spacing: 0.15em;
+                        font-weight: 600;
+                        color: @normalGrey;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                        &.not-ready {
+                            text-decoration: line-through;
+                        }
+                    }
+
+                    &.active {
+                        a , svg {
+                            color: @halfDarkerGrey;
+                            font-weight: 700;
+                        }
+                    }
+
+                    svg {
+                        font-size: 23px;
+                        margin-right: 8px;
+                        &.fa-user {
+                            margin-top: 7px;
+                        }
+                        &.fa-graduation-cap {
+                            margin-top: 8px;
+                        }
+                        &.fa-address-card {
+                            margin-top: 8px;
+                        }
+                        &.fa-briefcase {
+                            margin-top: 7px;
+                        }
+                        &.fa-laptop-code {
+                            margin-top: 7px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    select {
+        background-color: @mainBlue;
+        border-radius: 15px;
+        font-size: 20px;
+        color: white;
+        width: 60px;
+        margin: 0;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen {
+    @media (min-width: 1200px) and (max-width: 1300px) {
+        header .navbar .navbar-collapse ul.navbar-nav .nav-item {
+            padding: 0 15px;
+        }
+    }
+    @media (min-width: 1301px) and (max-width: 1470px) {
+        header .navbar .navbar-collapse ul.navbar-nav .nav-item {
+            padding: 0 25px;
+        }
+    }
+    @media (max-width: 1199px) {
+        header .navbar .navbar-collapse ul.navbar-nav .nav-item {
+            padding-top: 10px;
+            svg {
+                width: 45px;
+            }
+        }
+    }
+    @media (max-width: 350px) {
+        header .navbar .navbar-collapse ul.navbar-nav .nav-item {
+            padding: 0 25px;
+        }
+    }
+}

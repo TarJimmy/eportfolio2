@@ -1,0 +1,39 @@
+<div class="page page-formations">
+    <h1 class="page-title">
+        <i class="fas fa-graduation-cap"></i>
+        {{Locale.SchoolPath}}
+    </h1>
+    <div class="row">
+        <section class="col-xs-12 formation-zone" [ngClass]="{'col-md-12' : isLast, 'col-lg-6': !isLast}" *ngFor="let formation of formations; let isLast = last">
+            <div class="formation">
+                <i *ngIf="formation.status == 'obtenu'" class="fas fa-award status"></i>
+                <i *ngIf="formation.status == 'en cours'" class="fas fa-spinner status rotating"></i>
+                <i *ngIf="formation.status == 'non obtenu'" class="fas fa-times status"></i>
+                <div class="formation-title">
+                    {{formation.title}}
+                </div>
+                <p class="formation-town">
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{formation.townId.title}} ( {{formation.townId.departmentId.title}} )
+                </p>
+                <img class="formation-image" [src]="formation.image">
+                <div class="formation-date">
+                    <ul>
+                        <li *ngIf="!formation.endDate">
+                            {{Locale.Since}}
+                        </li>
+                        <li>
+                            {{formation.startDate}}
+                        </li>
+                        <li *ngIf="formation.endDate">
+                            {{formation.endDate}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div *ngIf="loading" class="loading">
+    {{Locale.loading}}
+</div>
