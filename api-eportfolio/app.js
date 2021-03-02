@@ -1,71 +1,31 @@
-var express       = require('express'),
-    path          = require('path'),
-    i18n          = require('i18n'),
-    Config        = require('./config'),
-    Mongoose      = require('mongoose'),
-    async         = require('async'),
-    _             = require('underscore'),
-    bodyParser    = require('body-parser'),
-    glob          = require('glob'),
-    cookieParser = require('cookie-parser'),
+let express         =   require('express'),
+    path            =   require('path'),
+    Mongoose        =   require('mongoose'),
+    bodyParser      =   require('body-parser'),
+    cookieParser    =   require('cookie-parser'),
+    colors          =   require('colors/safe'),
+    cors            =   require('cors'),
+    config          =   require('./config')
     app = express();
 
+//mongodb+srv://' + Config.db.user + ':' + Config.db.password + '@' + Config.db.name + '.gzngh.mongodb.net/'+ Config.db.name + '?retryWrites=true&w=majority\n
 //Database Connection
 Mongoose.Promise = global.Promise;
 Mongoose
-    .connect('mongodb+srv://' + Config.db.user + ':' + Config.db.password + '@' + Config.db.name + '.gzngh.mongodb.net/'+ Config.db.name + '?retryWrites=true&w=majority\n', {
+    .connect('mongodb://localhost/eportfolio', {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then(() => console.log('Connexion à MongoDB réussie !'))
-    .catch(()=> {
-        console.error('mongodb+srv://' + Config.db.user + ':' + Config.db.password + '@' + Config.db.name + '.gzngh.mongodb.net/'+ Config.db.name + '?retryWrites=true&w=majority')
-    });
+    .then(() => console.info(colors.cyan('MongoDB   ', colors.red('Ready'), colors.green('Db : ' + config.db.name))))
+    .catch((e) => console.error(colors.red(e)));
 
-//Locale
-i18n.configure({
-    locales         : ['en', 'fr'],
-    directory       : __dirname + '/locales',
-    defaultLocale   : Config.mode.lang,
-    prefix          : Config.overwrite.locales ? Config.overwrite.locales + '_' : '',
-    queryParameter  : 'lang'
-})
-app.use(i18n.init);
-app.locals = function(){};
 
-glob(__dirname + 'locales/@(??).json', {}, (err, files)=> {
-    async.waterfall([
-            (callback) => {
-                var locales = {};
-                files.forEach((file)=> {
-                    if (file) {
-                        locales[path.basename(file, '.json')] = require(file);
-                    }
-                });
-                callback(null, locales);
-            },
-            (locales, callback) => {
-                if(Config.overwrite.locales) {
-                    files.forEach((file)=> {
-                        if (file) {
-                            var over = require('./locales/' + Config.overwrite.locales + '_' + path.basename(file));
-                            if (!_.isEmpty(over)) {
-                                _.each(over, (value, key) => {
-                                    if (key && value) {
-                                        locales[path.basename(file, '.json')][key] = value;
-                                    }
-                                });
-                            }
-                        }
-                    })
-                }
-                callback(null, locales);
-            }
-        ],
-        (err, locales) => {
-            global.i18n = locales;
-            console.info('i18n ready');
-        });
+//Thread management
+process.on('SIGINT', () => {
+    Mongoose.disconnect((err) => {
+        console.info(colors.cyan('MongoDB    ') + colors.red('disconnected'));
+        process.exit(err ? 1 : 0);
+    })
 });
 
 app
@@ -73,13 +33,18 @@ app
     .use(bodyParser.urlencoded({limit: '100mb', extended: false}))
     .use(express.static(path.join(__dirname, 'src')))
     .use(express.static(path.join(__dirname, 'src')))
-    .use(cookieParser());
+    .use(cookieParser())
+    .use(cors());
+
 //Routing
 app
     .use('/', require('./routes/home'))
 
-    //Exemple
-    .use('/api/formations',   require('./routes/formations'))
-    .use('/api/v1/generate_uid', require('./routes/generate_uid'));
+    //routes
+    .use('/formations'          ,   require('./routes/formations'))
+    .use('/experiencePro'       ,   require('./routes/experiencePro'))
+    .use('/company'              ,   require('./routes/company'))
+    .use('/skill'       ,   require('./routes/skill'));
+
 
 module.exports = app;

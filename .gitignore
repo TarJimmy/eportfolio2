@@ -47,5 +47,4 @@ testem.log
 Thumbs.db
 
 #Env Project
-api-eportfolio/.env
 /api-eportfolio/client.json

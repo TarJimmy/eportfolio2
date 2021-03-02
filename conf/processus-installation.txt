@@ -1,0 +1,36 @@
+sudo loadkeys fr
+Permetre de se connecter en ssh
+sudo -i -> connexion en root
+passwd root -> changer mdp root
+nano /etc/ssh/sshd_config -> Changer "PermitRootLogin without-password" à "PermitRootLogin yes"
+service sshd restart
+----------
+Instalation des modules necessaires au fonctionnement de Eportfolio
+apt update && apt upgrade && apt install -y curl git
+apt install -y npm nodejs build-essential mongodb nginx
+apt install -y sendmail
+Pour environnement de test =>
+npm i nodemon -g
+----------
+Activation des differents services
+service mongodb stop
+echo "smallfiles = true" >> /etc/mongodb.conf && rm -rf /var/lib/mongodb/journal/*
+service mongodb start
+
+mkdir /usr/local/project-eportfolio && cd /usr/local/project-eportfolio
+git clone https://github.com/TarJimmy/eportfolio2.git
+mv eportfolio2/* .
+rm -r eportfolio2/
+npm install && npm install api-eportfolio/ && npm install -g @angular/cli && npm install pm2 -g
+cd api-eportfolio/ && npm install && cd ..
+pm2 start /usr/local/project-eportfolio/api-eportfolio/bin/www --name="api-eportfolio"
+pm2 start "ng serve" --name="angular-eportfolio" && pm2 save && pm2 startup systemd
+
+rm -rf /etc/nginx/sites-available/default && cp /usr/local/project-eportfolio/conf/nginx.conf /etc/nginx/sites-available/default
+service nginx restart
+
+faire shutdown -r now
+verifier au demarrage:
+pm2 status
+service nginx status
+service mongodb status

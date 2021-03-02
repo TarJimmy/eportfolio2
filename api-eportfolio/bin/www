@@ -4,15 +4,16 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('api-eportfolio:server');
-var http = require('http');
+var config  =   require('../config'),
+    app     =   require('../app'),
+    debug   =   require('debug')('api-eportfolio:server'),
+    http    =   require('http');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(config.mode.port || '3000');
 app.set('port', port);
 
 /**

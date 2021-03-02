@@ -1,4 +1,3 @@
-require('dotenv').config();
 const fs = require('fs');
 
 const Client = {
@@ -13,9 +12,7 @@ const Client = {
         baseUrl :   "",
     },
     db: {
-        name: process.env.DBNAME,
-        user: process.env.DBUSER,
-        password: process.env.DBPASSWORD,
+        name: 'eportfolio',
     },
     overwrite: {
         "locales" : ""
@@ -23,7 +20,7 @@ const Client = {
 };
 
 try {
-    require('../client.json');
+    require(__dirname + '/client.json');
 } catch (e) {
     fs.writeFileSync(__dirname + '/client.json', JSON.stringify(Client, null, 2), 'utf8');
 }
