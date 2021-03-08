@@ -1,9 +1,9 @@
 {
-  "name": "front-eportfolio",
+  "name": "Eportfolio",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --live-reload=false",
+    "start": "ng serve --live-reload=false --proxy-config src/proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

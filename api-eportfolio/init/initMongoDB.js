@@ -196,13 +196,13 @@ db.languages.insert({
 db.languages.insert({
     title   :   'mySql',
     level   :   'base',
-    type    :   ['web', 'SQL'],
+    type    :   ['SQL'],
     image   :   'languages/mysql.png'
 });
 db.languages.insert({
     title   :   'mongoDB',
     level   :   'intermediaire',
-    type    :   ['web', 'SQL'],
+    type    :   ['SQL'],
     image   :   'languages/mongodb.png'
 });
 db.languages.insert({
@@ -531,4 +531,10 @@ db.skills.insert({
     title       :   'Robo3T',
     type        :   'DatabaseManagementSystems',
     image       :   'others/robo3t.png'
+});
+
+db.skills.insert({
+    title       :   'Nginx',
+    type        :   'ReverseProxy',
+    image       :   'others/nginx.png'
 });

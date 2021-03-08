@@ -28,7 +28,6 @@ export class SkillViewComponent implements OnInit {
                 this.languages  = res.languages;
                 this.frameworks = res.frameworks;
                 this.others     = _.each(res.skills, skill => { skill.image = GlobalConstants.getCompletePath(skill.image); });
-                console.log(this.others)
                 this.languages.forEach((language) => {
                     language.image = GlobalConstants.getCompletePath(language.image);
                     this.movObjectByType(language);
@@ -41,15 +40,11 @@ export class SkillViewComponent implements OnInit {
     }
 
     private movObjectByType(obj: any) : void {
-        console.log(obj.type[0])
         switch (obj.type[0]) {
             case 'web' :
                 if (obj.type[1] === 'front-end') {
                     this.frontEnd.push(obj);
                 } else {
-                    if (obj.type[1] === 'SQL') {
-                        this.sqls.push(obj);
-                    }
                     this.backEnd.push(obj);
                 }
                 break;

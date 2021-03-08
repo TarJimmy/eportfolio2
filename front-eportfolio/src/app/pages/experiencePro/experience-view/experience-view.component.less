@@ -386,7 +386,7 @@
 
                 .bar {
                     padding-left: 10px;
-                    border-radius: 0 8px 8px 0;
+                    border-radius: 0 15px 15px 0;
                     height: 55px;
                     float: left;
                     -webkit-animation: show-bar-horizontal 1.2s 0s forwards;
@@ -423,7 +423,7 @@
                 }
 
                 .bar {
-                    border-radius: 0 0 8px 8px;
+                    border-radius: 0 0 15px 15px;
                     width: 140px;
                     height: 300px;
 
@@ -551,6 +551,15 @@
         @media (max-width: 390px) {
             .experience-timeline {
                 transform: scale(0.8) translateY(-300px);
+            }
+        }
+
+        @media (max-width: 390px) {
+            .experience-graph {
+                transform: scale(0.8);
+            }
+            .experience-timeline {
+                transform: scale(0.6) translate(-15%, -800px);
             }
         }
     }

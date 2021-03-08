@@ -1,51 +1,55 @@
 <div class="page page-skills">
     <h1 class="page-title" [textContent]="Locale.MySkills"></h1>
-    <section class="group-skill web">
-        <h2 class="skill-title">
-            <i class="fas fa-globe"></i>
-            {{Locale.Web}}
-        </h2>
-        <div class="skill-body">
-            <div id="left">
-                <h3>Front-end</h3>
-                <div class="zone-box">
-                    <div class="box" *ngFor="let front of frontEnd">
-                        <div class="box-inner">
-                            <div class="box-front">
-                                <img [src]="front.image">
-                            </div>
-                            <div class="box-back">
-                                <h4 [textContent]="front.title"></h4>
-                                <span [title]="Locale[front.level + 'Complet']" [textContent]="Locale[front.level]"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="line-separator"></div>
-            <div id="right">
-                <h3>Back-end</h3>
-                <div class="zone-box">
-                    <div class="box" *ngFor="let back of backEnd">
-                        <div class="box-inner">
-                            <div class="box-front">
-                                <img [src]="back.image">
-                            </div>
-                            <div class="box-back">
-                                <h4 [textContent]="back.title"></h4>
-                                <span [title]="Locale[back.level + 'Complet']" [textContent]="Locale[back.level]"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="group-skill other">
-        <div class="zone-box">
+    <div class="page-body">
+        <section class="group-skill web">
             <h2 class="skill-title">
                 <i class="fas fa-globe"></i>
-                {{Locale.OtherSkills}}
+                {{Locale.Web}}
+            </h2>
+            <div class="skill-body">
+                <div id="left">
+                    <h3>Front-end</h3>
+                    <div class="left-body">
+                        <div class="zone-box">
+                            <div class="box" *ngFor="let front of frontEnd">
+                                <div class="box-inner">
+                                    <div class="box-front">
+                                        <img [src]="front.image">
+                                    </div>
+                                    <div class="box-back">
+                                        <h4 class="zone-text-long" [title]="front.title" [textContent]="front.title"></h4>
+                                        <span [title]="Locale[front.level + 'Complet']" [textContent]="Locale[front.level]"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="line-separator"></div>
+                <div id="right">
+                    <h3>Back-end</h3>
+                    <div class="right-body">
+                        <div class="zone-box">
+                        <div class="box" *ngFor="let back of backEnd">
+                            <div class="box-inner">
+                                <div class="box-front">
+                                    <img [src]="back.image">
+                                </div>
+                                <div class="box-back">
+                                    <h4 class="zone-text-long" [title]="back.title" [textContent]="back.title"></h4>
+                                    <span [title]="Locale[back.level + 'Complet']" [textContent]="Locale[back.level]"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="group-skill other">
+                <h2 class="skill-title">
+                    <i class="fas fa-globe"></i>
+                    {{Locale.OtherSkills}}
             </h2>
             <div class="skill-body">
                 <div class="zone-box">
@@ -63,13 +67,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="group-skill logiciel">
-        <div class="zone-box">
+        </section>
+        <section class="group-skill logiciel">
             <h2 class="skill-title">
-                <i class="fas fa-globe"></i>
-                {{Locale.SoftwareOrMobile}}
+                    <i class="fas fa-globe"></i>
+                    {{Locale.SoftwareOrMobile}}
             </h2>
             <div class="skill-body">
                 <div class="zone-box">
@@ -79,20 +81,18 @@
                                 <img [src]="logiciel.image">
                             </div>
                             <div class="box-back">
-                                <h4 [textContent]="logiciel.title"></h4>
+                                <h4 class="zone-text-long" [title]="logiciel.title" [textContent]="logiciel.title"></h4>
                                 <span [title]="Locale[logiciel.level + 'Complet']" [textContent]="Locale[logiciel.level]"></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="group-skill sql">
-        <div class="zone-box">
+        </section>
+        <section class="group-skill sql">
             <h2 class="skill-title">
-                <i class="fas fa-globe"></i>
-                {{Locale.Database}}
+                    <i class="fas fa-globe"></i>
+                    {{Locale.Database}}
             </h2>
             <div class="skill-body">
                 <div class="zone-box">
@@ -102,13 +102,13 @@
                                 <img [src]="sql.image">
                             </div>
                             <div class="box-back">
-                                <h4 [textContent]="sql.title"></h4>
+                                <h4 class="zone-text-long" [title]="sql.title" [textContent]="sql.title"></h4>
                                 <span [title]="Locale[sql.level + 'Complet']" [textContent]="Locale[sql.level]"></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </div>
