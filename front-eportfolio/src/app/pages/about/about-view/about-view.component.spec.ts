@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormationComponentComponent } from './formation-component.component';
+import { AboutViewComponent } from './about-view.component';
 
-describe('FormationComponentComponent', () => {
-  let component: FormationComponentComponent;
-  let fixture: ComponentFixture<FormationComponentComponent>;
+describe('AboutViewComponent', () => {
+  let component: AboutViewComponent;
+  let fixture: ComponentFixture<AboutViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormationComponentComponent ]
+      declarations: [ AboutViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormationComponentComponent);
+    fixture = TestBed.createComponent(AboutViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

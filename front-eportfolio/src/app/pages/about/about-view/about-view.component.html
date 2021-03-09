@@ -1,0 +1,100 @@
+<div class="page page-about">
+    <section class="page-body">
+        <div class="left">
+            <img [src]="pathImage + 'me.jpg'">
+            <h3>{{Locale.Language}} :</h3>
+            <p>{{Locale.FluentFrench}}</p>
+            <p>{{Locale.TechnicalEnglish}}</p>
+            <h3>{{Locale.ContactMe}} :</h3>
+            <ul>
+                <li>
+                    <i class="fas fa-map-marker-alt"></i> 75 impasse Turpins 26390 - Tersanne
+                </li>
+                <li>
+                    <i class="fas fa-at"></i> tardyjim26pro@gmail.com
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/jimmy-tardy-0ab915196/"><i class="fab fa-linkedin"></i> Jimmy Tardy </a>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <h1 class="page-title">
+                {{Locale.AboutMe}}
+            </h1>
+            <section class="intro">
+                <h2>{{Locale.Presentation}}</h2>
+                <p class="description">{{Locale.DescriptionMe}}</p>
+                <p class="conclusion"><strong>{{Locale.ConclusionDescription}}</strong></p>
+            </section>
+            <section class="passions">
+                <h2>{{Locale.Hobbies}}</h2>
+                <ul id="list-parent">
+                    <li>
+                        <div class="collapse-header" id="heading-chess">
+                            <h3>
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapse-chess" aria-expanded="true" aria-controls="collapse-chess">
+                                    Echecs <i class="fas fa-chess"></i>
+                                </button>
+                            </h3>
+                        </div>
+
+                        <div id="collapse-chess" class="collapse" aria-labelledby="heading-chess" data-parent="#list-parent">
+                            <div class="card-body">
+                                <p>{{Locale.DevelopEchec}}</p>
+                                <p>{{Locale.EchecFight}}</p>
+                                <ul>
+                                    <li><a href="https://lichess.org/" target="_blank">lichess.org: <strong>{{lichessAcount}}</strong></a></li>
+                                    <li><a href="https://www.chess.com/" target="_blank">chess.com: <strong>{{chessAcount}}</strong></a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapse-header" id="heading-basket">
+                            <h3>
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapse-backet" aria-expanded="true" aria-controls="collapse-basket">
+                                    {{Locale.Basket}} <i class="fas fa-basketball-ball"></i>
+                                </button>
+                            </h3>
+                        </div>
+                        <div id="collapse-backet" class="collapse" aria-labelledby="heading-backet" data-parent="#list-parent">
+                            <div class="card-body">
+                                {{Locale.DevelopBasketBall}}
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapse-header" id="heading-series">
+                            <h3>
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapse-series" aria-expanded="true" aria-controls="collapse-series">
+                                    {{Locale.SeriesMangas}} <i class="fas fa-tv"></i>
+                                </button>
+                            </h3>
+                        </div>
+                        <div id="collapse-series" class="collapse" aria-labelledby="heading-series" data-parent="#list-parent">
+                            <div class="card-body">
+                                {{Locale.DevelopSeriesMangas}}
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapse-header" id="heading-petanque">
+                            <h3>
+                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapse-petanque" aria-expanded="true" aria-controls="collapse-petanque">
+                                    {{Locale.Petanque}}
+                                </button>
+                            </h3>
+                        </div>
+                        <div id="collapse-petanque" class="collapse" aria-labelledby="heading-petanque" data-parent="#list-parent">
+                            <div class="card-body">
+                                {{Locale.DevelopPetanque}}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </section>
+</div>

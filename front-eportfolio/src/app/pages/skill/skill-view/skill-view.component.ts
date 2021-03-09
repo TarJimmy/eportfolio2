@@ -27,13 +27,18 @@ export class SkillViewComponent implements OnInit {
             .subscribe((res) => {
                 this.languages  = res.languages;
                 this.frameworks = res.frameworks;
-                this.others     = _.each(res.skills, skill => { skill.image = GlobalConstants.getCompletePath(skill.image); });
+                this.others     = _.each(res.skills, skill => {
+                    skill.image = GlobalConstants.getCompletePath(skill.image);
+                    skill.starsNumber = Math.floor(skill.stars);
+                });
                 this.languages.forEach((language) => {
                     language.image = GlobalConstants.getCompletePath(language.image);
+                    language.starsNumber = Math.floor(language.stars);
                     this.movObjectByType(language);
                 });
                 this.frameworks.forEach((framework) => {
                     framework.image = GlobalConstants.getCompletePath(framework.image);
+                    framework.starsNumber = Math.floor(framework.stars);
                     this.movObjectByType(framework);
                 });
             })

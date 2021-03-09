@@ -23,6 +23,10 @@ const mongoose = require('mongoose'),
         image: {
             type        : String,
             required    : false
+        },
+        stars: {
+            type        : Number,
+            required    : false
         }
     });
 

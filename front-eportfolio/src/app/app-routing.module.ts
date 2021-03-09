@@ -6,6 +6,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ExperienceViewComponent } from "./pages/experiencePro/experience-view/experience-view.component";
 import {CompanyViewComponent} from "./pages/company/company-view/company-view.component";
 import {SkillViewComponent} from "./pages/skill/skill-view/skill-view.component";
+import {AboutViewComponent} from "./pages/about/about-view/about-view.component";
 const routes: Routes = [
     {
         path        :   '',
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path        :   'companies',
         component   :   CompanyViewComponent
+    },
+    {
+        path        :   'about',
+        component   :   AboutViewComponent
     },
     {
         path        :   'skills',

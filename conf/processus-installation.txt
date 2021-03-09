@@ -23,8 +23,8 @@ mv eportfolio2/* .
 rm -r eportfolio2/
 npm install && npm install api-eportfolio/ && npm install -g @angular/cli && npm install pm2 -g
 cd api-eportfolio/ && npm install && cd ..
-pm2 start /usr/local/project-eportfolio/api-eportfolio/bin/www --name="api-eportfolio"
-pm2 start "ng serve" --name="angular-eportfolio" && pm2 save && pm2 startup systemd
+pm2 start /usr/local/project-eportfolio/api-eportfolio/bin/www --name="api"
+pm2 start "npm start" --name="front" && pm2 save && pm2 startup systemd
 
 rm -rf /etc/nginx/sites-available/default && cp /usr/local/project-eportfolio/conf/nginx.conf /etc/nginx/sites-available/default
 service nginx restart

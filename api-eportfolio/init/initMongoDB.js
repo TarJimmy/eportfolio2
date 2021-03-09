@@ -129,93 +129,108 @@ db.languages.insert({
     title   :   'html',
     level   :   'avance',
     type    :   ['web', 'front-end'],
-    image   :   'languages/html.png'
+    image   :   'languages/html.png',
+    stars   :   5
 });
 db.languages.insert({
     title   :   'css',
     level   :   'intermediaire',
     type    :   ['web', 'front-end'],
-    image   :   'languages/css.png'
+    image   :   'languages/css.png',
+    stars   :   4
 });
 db.languages.insert({
     title   :   'less',
     level   :   'intermediaire',
     type    :   ['web', 'front-end'],
-    image   :   'languages/less.png'
+    image   :   'languages/less.png',
+    stars   :   4
 });
 db.languages.insert({
     title   :   'javascript',
     level   :   'intermediaire',
     type    :   ['web', 'front-end'],
-    image   :   'languages/js.png'
+    image   :   'languages/js.png',
+    stars   :   4
 });
 db.languages.insert({
     title   :   'typeScript',
     level   :   'base',
     type    :   ['web', 'front-end'],
-    image   :   'languages/typescript.png'
+    image   :   'languages/typescript.png',
+    stars   :   2
 });
 db.languages.insert({
     title   :   'nodeJS',
     level   :   'intermediaire',
     type    :   ['web', 'back-end'],
-    image   :   'languages/nodejs.png'
+    image   :   'languages/nodejs.png',
+    stars   :   4
 });
 db.languages.insert({
     title   :   'php',
     level   :   'base',
     type    :   ['web', 'back-end'],
-    image   :   'languages/php.png'
+    image   :   'languages/php.png',
+    stars   :   1
 });
 //Logiciel
 db.languages.insert({
     title   :   'java',
     level   :   'intermediaire',
     type   :   ['logiciel', 'mobile'],
-    image   :   'languages/java.png'
+    image   :   'languages/java.png',
+    stars   :   4
 });
 db.languages.insert({
     title   :   'c++',
     level   :   'base',
     type   :   ['logiciel'],
-    image   :   'languages/cpp.png'
+    image   :   'languages/cpp.png',
+    stars   :   2.5
 });
 db.languages.insert({
     title   :   'c',
     level   :   'base',
     type   :   ['logiciel'],
-    image   :   'languages/c.png'
+    image   :   'languages/c.png',
+    stars   :   3.5
 });
 db.languages.insert({
     title   :   'python',
     level   :   'intermediaire',
     type   :   ['logiciel'],
-    image   :   'languages/python.png'
+    image   :   'languages/python.png',
+    stars   :   2
 });
 //SQL
 db.languages.insert({
     title   :   'mySql',
     level   :   'base',
     type    :   ['SQL'],
-    image   :   'languages/mysql.png'
+    image   :   'languages/mysql.png',
+    stars   :   3
 });
 db.languages.insert({
     title   :   'mongoDB',
     level   :   'intermediaire',
     type    :   ['SQL'],
-    image   :   'languages/mongodb.png'
+    image   :   'languages/mongodb.png',
+    stars   :   4
 });
 db.languages.insert({
     title   :   'sqlite',
     level   :   'base',
     type    :   ['SQL'],
-    image   :   'languages/sqlite.png'
+    image   :   'languages/sqlite.png',
+    stars   :   4
 });
 db.languages.insert({
     title   :   'postgreSQL',
     level   :   'base',
     type    :   ['SQL'],
-    image   :   'languages/postgresql.png'
+    image   :   'languages/postgresql.png',
+    stars   :   2
 });
 
 var nodeJSId        = db.languages.findOne({title: 'nodeJS'})._id,
@@ -233,7 +248,8 @@ db.frameworks.insert({
     level       :   'intermediaire',
     type        :   ['web', 'back-end'],
     languageId  :   nodeJSId,
-    image       :   'framework/expressjs.png'
+    image       :   'framework/expressjs.png',
+    stars       :   3.5
 });
 
 db.frameworks.insert({
@@ -241,28 +257,33 @@ db.frameworks.insert({
     level       :   'intermediaire',
     type        :   ['web', 'front-end'],
     languageId  :   cssId,
-    image       :   'framework/bootstrap.png'
+    image       :   'framework/bootstrap.png',
+    stars       :   4.5
 });
 db.frameworks.insert({
     title       :   'angular',
     level       :   'base',
     type        :   ['web', 'front-end'],
     languageId  :   typeScriptId,
-    image       :   'framework/angular.png'
+    image       :   'framework/angular.png',
+    stars       :   2
 });
 db.frameworks.insert({
     title       :   'angularJS',
     level       :   'intermediaire',
     type        :   ['web', 'front-end'],
     languageId  :   javascriptId,
-    image       :   'framework/angularjs.png'
+    image       :   'framework/angularjs.png',
+    stars       :   3.5
+
 });
 db.frameworks.insert({
     title       :   'mongoose',
     level       :   'intermediaire',
     type        :   ['web', 'back-end'],
     languageId  :   javascriptId,
-    image       :   'framework/mongoose.png'
+    image       :   'framework/mongoose.png',
+    stars       :   4
 });
 
 var angularId       = db.frameworks.findOne({title: 'angular'})._id,
@@ -494,47 +515,57 @@ db.jobs.insert({
 db.skills.insert({
     title       :   'Office',
     type        :   'BureauticSoftware',
-    image       :   'others/office.png'
+    image       :   'others/office.png',
+    stars       :   3.5
 });
 
 db.skills.insert({
     title       :   'Git',
     type        :   'VersionManagementSoftware',
-    image       :   'others/git.png'
+    image       :   'others/git.png',
+    stars       :   4
 });
 
 db.skills.insert({
     title       :   'UML',
     type        :   'ProgrammDesign',
-    image       :   'others/uml.png'
+    image       :   'others/uml.png',
+    stars       :   4.5
 });
 
 db.skills.insert({
     title       :   'Redmine',
     type        :   'ProjectManagementApplication',
     image       :   'others/redmine.png'
+    ,
+    stars       :   3
 });
 
 db.skills.insert({
     title       :   'Slack',
     level       :   'ProjectManagementApplication',
     image       :   'others/slack.png'
+    ,
+    stars       :   4
 });
 
 db.skills.insert({
     title       :   'PhpMyAdmin',
     type        :   'DatabaseManagementSystems',
-    image       :   'others/phpmyadmin.png'
+    image       :   'others/phpmyadmin.png',
+    stars       :   2
 });
 
 db.skills.insert({
     title       :   'Robo3T',
     type        :   'DatabaseManagementSystems',
-    image       :   'others/robo3t.png'
+    image       :   'others/robo3t.png',
+    stars       :   4
 });
 
 db.skills.insert({
     title       :   'Nginx',
     type        :   'ReverseProxy',
-    image       :   'others/nginx.png'
+    image       :   'others/nginx.png',
+    stars       :   3
 });

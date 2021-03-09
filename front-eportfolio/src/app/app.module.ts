@@ -13,6 +13,7 @@ import { ExperienceViewComponent } from './pages/experiencePro/experience-view/e
 import { CompanyViewComponent } from './pages/company/company-view/company-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkillViewComponent } from './pages/skill/skill-view/skill-view.component';
+import {AboutViewComponent} from "./pages/about/about-view/about-view.component";
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { SkillViewComponent } from './pages/skill/skill-view/skill-view.componen
         ExperienceViewComponent,
         CompanyViewComponent,
         SkillViewComponent,
+        AboutViewComponent
     ],
     imports: [
         BrowserModule,

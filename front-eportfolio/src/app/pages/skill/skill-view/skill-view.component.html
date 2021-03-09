@@ -14,7 +14,11 @@
                             <div class="box" *ngFor="let front of frontEnd">
                                 <div class="box-inner">
                                     <div class="box-front">
-                                        <img [src]="front.image">
+                                        <div class="image" [ngStyle]="{'background-image': 'url(' + front.image + ')'}"></div>
+                                        <div class="stars">
+                                            <i class="fas fa-star" *ngFor="let item of [].constructor(front.starsNumber)"></i>
+                                            <i *ngIf="front.stars % 1 > 0" class="fas fa-star-half-alt"></i>
+                                        </div>
                                     </div>
                                     <div class="box-back">
                                         <h4 class="zone-text-long" [title]="front.title" [textContent]="front.title"></h4>
@@ -33,7 +37,11 @@
                         <div class="box" *ngFor="let back of backEnd">
                             <div class="box-inner">
                                 <div class="box-front">
-                                    <img [src]="back.image">
+                                    <div class="image" [ngStyle]="{'background-image': 'url(' + back.image + ')'}"></div>
+                                    <div class="stars">
+                                        <i class="fas fa-star" *ngFor="let item of [].constructor(back.starsNumber)"></i>
+                                        <i *ngIf="back.stars % 1 > 0" class="fas fa-star-half-alt"></i>
+                                    </div>
                                 </div>
                                 <div class="box-back">
                                     <h4 class="zone-text-long" [title]="back.title" [textContent]="back.title"></h4>
@@ -56,7 +64,11 @@
                     <div class="box" *ngFor="let other of others">
                         <div class="box-inner">
                             <div class="box-front">
-                                <img [src]="other.image">
+                                <div class="image" [ngStyle]="{'background-image': 'url(' + other.image + ')'}"></div>
+                                <div class="stars">
+                                    <i class="fas fa-star" *ngFor="let item of [].constructor(other.starsNumber)"></i>
+                                    <i *ngIf="other.stars % 1 > 0" class="fas fa-star-half-alt"></i>
+                                </div>
                             </div>
                             <div class="box-back">
                                 <h4 class="zone-text-long" [title]="other.title" [textContent]="other.title"></h4>
@@ -78,7 +90,11 @@
                     <div class="box" *ngFor="let logiciel of logiciels">
                         <div class="box-inner">
                             <div class="box-front">
-                                <img [src]="logiciel.image">
+                                <div class="image" [ngStyle]="{'background-image': 'url(' + logiciel.image + ')'}"></div>
+                                <div class="stars">
+                                    <i class="fas fa-star" *ngFor="let item of [].constructor(logiciel.starsNumber)"></i>
+                                    <i *ngIf="logiciel.stars % 1 > 0" class="fas fa-star-half-alt"></i>
+                                </div>
                             </div>
                             <div class="box-back">
                                 <h4 class="zone-text-long" [title]="logiciel.title" [textContent]="logiciel.title"></h4>
@@ -99,7 +115,11 @@
                     <div class="box" *ngFor="let sql of sqls">
                         <div class="box-inner">
                             <div class="box-front">
-                                <img [src]="sql.image">
+                                <div class="image" [ngStyle]="{'background-image': 'url(' + sql.image + ')'}"></div>
+                                <div class="stars">
+                                    <i class="fas fa-star" *ngFor="let item of [].constructor(sql.starsNumber)"></i>
+                                    <i *ngIf="sql.stars % 1 > 0" class="fas fa-star-half-alt"></i>
+                                </div>
                             </div>
                             <div class="box-back">
                                 <h4 class="zone-text-long" [title]="sql.title" [textContent]="sql.title"></h4>
