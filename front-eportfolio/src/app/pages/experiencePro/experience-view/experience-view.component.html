@@ -20,7 +20,7 @@
     </section>
     <section *ngIf="modeTimeline" class="experience-timeline">
         <div [ngStyle]="{'height' : (experienceProTimeline.length * 180) + 'px'}" class="line-scroll"></div>
-        <article class="experience-body {{getColor(experience.companyId.shortMetier)}}"
+        <article class="experience-body show-on-scroll {{getColor(experience.companyId.shortMetier)}}"
                  [ngClass]="{'left' : isOdd}"
                  *ngFor="let experience of experienceProTimeline; let index = index; let isOdd = odd">
             <div class="experience-info">

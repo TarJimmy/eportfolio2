@@ -345,9 +345,9 @@
                 }
 
                 svg {
-                    -webkit-animation: show-bar-content 3s 0s;
-                    -moz-animation: show-bar-content 3s 0s;
-                    animation: show-bar-content 3s 0s;
+                    -webkit-animation: bounce 3s 0s;
+                    -moz-animation: bounce 3s 0s;
+                    animation: bounce 3s 0s;
                 }
 
                 .text {
@@ -564,5 +564,42 @@
                 transform: scale(0.6) translate(-85%, -790px);
             }
         }
+    }
+}
+.is-load {
+    opacity: 1;
+    max-width: 600px;
+    width: 90%;
+    will-change: transform, opacity;
+    position: absolute;
+
+    &.left {
+        -webkit-animation: bunderLeft 1.2s 0s forwards;
+        -moz-animation: bunderLeft 1.2s 0s forwards;
+        animation: bunderLeft 1.2s 0s forwards;
+    }
+
+    &:not(.left) {
+        -webkit-animation: bunderRight 1.2s 0s forwards;
+        -moz-animation: bunderRight 1.2s 0s forwards;
+        animation: bunderRight 1.2s 0s forwards;
+    }
+}
+
+@keyframes bunderRight {
+    0% {
+        margin-left: -350%;
+    }
+    100% {
+        margin-left: -65%;
+    }
+}
+
+@keyframes bunderLeft {
+    0% {
+        margin-left: 350%;
+    }
+    100% {
+        margin-left: 65%;
     }
 }

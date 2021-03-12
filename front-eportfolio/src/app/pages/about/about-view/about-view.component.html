@@ -1,4 +1,7 @@
 <div class="page page-about">
+    <h1 class="page-title screen-min">
+        {{Locale.AboutMe}}
+    </h1>
     <section class="page-body">
         <div class="left">
             <img [src]="pathImage + 'me.jpg'">
@@ -14,12 +17,12 @@
                     <i class="fas fa-at"></i> tardyjim26pro@gmail.com
                 </li>
                 <li>
-                    <a href="https://www.linkedin.com/in/jimmy-tardy-0ab915196/"><i class="fab fa-linkedin"></i> Jimmy Tardy </a>
+                    <a href="https://www.linkedin.com/in/jimmy-tardy-0ab915196/" target="_blank"><i class="fab fa-linkedin"></i> Jimmy Tardy </a>
                 </li>
             </ul>
         </div>
         <div class="right">
-            <h1 class="page-title">
+            <h1 class="page-title screen-max">
                 {{Locale.AboutMe}}
             </h1>
             <section class="intro">
@@ -33,13 +36,13 @@
                     <li>
                         <div class="collapse-header" id="heading-chess">
                             <h3>
-                                <button class="btn collapsed" data-toggle="collapse" data-target="#collapse-chess" aria-expanded="true" aria-controls="collapse-chess">
-                                    Echecs <i class="fas fa-chess"></i>
+                                <button class="btn" data-toggle="collapse" data-target="#collapse-chess" aria-expanded="true" aria-controls="collapse-chess">
+                                    {{Locale.Chess}} <i class="fas fa-chess"></i>
                                 </button>
                             </h3>
                         </div>
 
-                        <div id="collapse-chess" class="collapse" aria-labelledby="heading-chess" data-parent="#list-parent">
+                        <div id="collapse-chess" class="collapse show" aria-labelledby="heading-chess" data-parent="#list-parent">
                             <div class="card-body">
                                 <p>{{Locale.DevelopEchec}}</p>
                                 <p>{{Locale.EchecFight}}</p>

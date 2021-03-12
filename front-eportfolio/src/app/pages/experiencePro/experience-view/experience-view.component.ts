@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import { GlobalConstants } from "../../../common/global-constants";
-import {ExperienceProService} from "../../../services/experiencePro/experience-pro.service";
+import { ExperienceProService } from "../../../services/experiencePro/experience-pro.service";
 import * as _ from 'underscore';
 import moment from 'moment';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 
-let block;
-
-@Component({
+A@Component({
     selector    : 'app-experience-view',
     templateUrl : './experience-view.component.html',
     styleUrls   : ['./experience-view.component.less'],
@@ -37,11 +35,24 @@ export class ExperienceViewComponent implements OnInit {
     modeTimeline            : boolean = false;
     loading                 : boolean = true;
     screen;
+    elementsToShow;
+
+    @HostListener('window:load', ['$event'])
+    onLoad(event) {
+        this.elementsToShow = document.querySelectorAll('.show-on-scroll');
+        this.showDivVisible();
+    }
+
+    @HostListener('window:scroll', ['$event'])
+    onWindowScroll(event) {
+        this.showDivVisible();
+    }
+
     constructor(private experienceProService: ExperienceProService) {
         this.Locale = GlobalConstants.locale();
         this.experienceProService = experienceProService;
         this.screen = screen;
-        window.onresize = () => {this.screen = screen;};
+        this.elementsToShow = [];
     }
 
     ngOnInit(): void {
@@ -72,12 +83,12 @@ export class ExperienceViewComponent implements OnInit {
         }, (error) => {
                 console.error('error' + error.message);
             });
+        window.onresize = () => { this.screen = screen; };
     }
 
     private getModeGraph() : void {
         this.experienceProGraph = [];
         let maxTime = 0;
-        console.log(this.experiencePro)
         this.experiencePro.forEach(exp => {
             let elem = this.experienceProGraph.find(expGraph => expGraph.typeJob === exp.typeJob);
             let endDate = exp.endDate ? exp.endDate : moment();
@@ -102,7 +113,6 @@ export class ExperienceViewComponent implements OnInit {
         this.experienceProGraph.forEach(exp => {
             let startDate   = moment('1970-01-01');
             let endDate     = startDate.clone().add(exp.time, 'd');
-            console.log(startDate.format('YYYY-MM-DD'), endDate.format('YYYY-MM-DD'))
             exp.pourcent = (exp.time / maxTime * 100).toFixed(2);
             exp.fullDate = this.strDiffDate(new Date(startDate.format('YYYY-MM-DD')), new Date(endDate.format('YYYY-MM-DD')));
             let nbYears = endDate.diff(startDate, 'year'),
@@ -120,7 +130,6 @@ export class ExperienceViewComponent implements OnInit {
             }
         });
         this.experienceProGraph = _.sortBy(this.experienceProGraph, exp => { return exp.time }).reverse();
-        console.log(this.experienceProGraph)
     }
 
     private getModeTimeline() : void {
@@ -268,5 +277,22 @@ export class ExperienceViewComponent implements OnInit {
             }
         }
 
+    }
+
+    private isElementInViewport(el): Boolean {
+        const rect = el.getBoundingClientRect();
+        return (
+            (rect.top <= 0 && rect.bottom >= 0)
+            || (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) && rect.top <= (window.innerHeight || document.documentElement.clientHeight))
+            || (rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+        );
+    }
+
+    private showDivVisible(): void {
+        this.elementsToShow.forEach((element) => {
+            if (this.isElementInViewport(element) && !element.classList.contains("is-load")) {
+                element.classList.add('is-load');
+            }
+        });
     }
 }
