@@ -3,12 +3,13 @@
         <i class="fas fa-graduation-cap"></i>
         {{Locale.SchoolPath}}
     </h1>
-    <div class="row">
-        <section class="col-xs-12 formation-zone" [ngClass]="{'col-md-12' : isLast, 'col-lg-6': !isLast}" *ngFor="let formation of formations; let isLast = last">
-            <div class="formation">
-                <i *ngIf="formation.status == 'obtenu'" class="fas fa-award status"></i>
-                <i *ngIf="formation.status == 'en cours'" class="fas fa-spinner status rotating"></i>
-                <i *ngIf="formation.status == 'non obtenu'" class="fas fa-times status"></i>
+    <div class="formation-content">
+        <section class="formation"
+                 [ngClass]="{'success' : formation.status == 'obtenu', 'in-progress': formation.status === 'en cours', 'red' : formation.status === 'non obtenu'}"
+                 *ngFor="let formation of formations; let isLast = last">
+                <i *ngIf="formation.status === 'obtenu'" class="fas fa-award status"></i>
+                <i *ngIf="formation.status === 'en cours'" class="fas fa-spinner status rotating"></i>
+                <i *ngIf="formation.status === 'non obtenu'" class="fas fa-times status"></i>
                 <div class="formation-title">
                     {{formation.title}}
                 </div>
@@ -18,19 +19,8 @@
                 </p>
                 <img class="formation-image" [src]="formation.image">
                 <div class="formation-date">
-                    <ul>
-                        <li *ngIf="!formation.endDate">
-                            {{Locale.Since}}
-                        </li>
-                        <li>
-                            {{formation.startDate}}
-                        </li>
-                        <li *ngIf="formation.endDate">
-                            {{formation.endDate}}
-                        </li>
-                    </ul>
+                    <span [textContent]="formation.strDate"></span>
                 </div>
-            </div>
         </section>
     </div>
 </div>

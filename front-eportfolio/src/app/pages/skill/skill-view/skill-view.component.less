@@ -27,6 +27,7 @@
             backface-visibility: hidden;
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
         .box-front {
             border-radius: 15px;
@@ -57,10 +58,11 @@
         .box-back {
             border-radius: 30px;
             background-color: @halfDarkerGrey;
-            padding: 20px 4px;
+            padding: 10px 1px;
             color: white;
             transform: rotateY(180deg);
             h4 {
+                display: none;
                 font-size: 20px;
                 text-transform: capitalize;
             }
@@ -140,7 +142,9 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-
+                    h4 {
+                        display: block;
+                    }
                     span {
                         display: none;
                     }

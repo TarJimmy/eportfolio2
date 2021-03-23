@@ -44,6 +44,7 @@ app
     .use('/formations'          ,   require('./routes/formations'))
     .use('/experiencePro'       ,   require('./routes/experiencePro'))
     .use('/company'              ,   require('./routes/company'))
+    .use('/project'              ,   require('./routes/project'))
     .use('/skill'       ,   require('./routes/skill'));
 
 

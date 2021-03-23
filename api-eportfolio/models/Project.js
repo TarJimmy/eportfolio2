@@ -12,18 +12,12 @@ const mongoose = require('mongoose'),
             required    : false
         },
         languages: [{
-            languageId: {
-                type        : Schema.Types.ObjectId,
-                ref         : 'Language',
-                required    : true
-            }
+            type        : mongoose.Schema.Types.ObjectId,
+            ref         : 'Language',
         }],
         frameworks: [{
-            frameworkId: {
-                type        : Schema.Types.ObjectId,
-                ref         : 'Framework',
-                required    : true
-            }
+            type        : mongoose.Schema.Types.ObjectId,
+            ref         : 'Framework',
         }],
         ranking: {
             type        :   Number,

@@ -11,11 +11,12 @@ export class SkillViewComponent implements OnInit {
     Locale;
     frontEnd    :   Array<any> = [];
     backEnd     :   Array<any> = [];
-    sqls         :   Array<any> = [];
+    sqls        :   Array<any> = [];
     logiciels   :   Array<any> = [];
     others      :   Array<any> = [];
     languages   :   Array<any> = [];
     frameworks  :   Array<any> = [];
+
     constructor(private skillService: SkillService) {
         this.Locale = GlobalConstants.locale();
         this.skillService = skillService;

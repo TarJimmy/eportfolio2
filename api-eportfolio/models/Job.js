@@ -10,15 +10,14 @@ const mongoose = require('mongoose'),
             enum        : ['CDD','CDI', 'interim', 'stage'],
             required    : true
         },
-        typeJob: {
-            type        : String,
-            enum        : ['summer','webProgramming'],
-            required    : true
-        },
         description: {
             type        :   String,
             required    :   true
         },
+        environment: [{
+            type        : Schema.Types.ObjectId, //ref : Langage and framework
+            required    : false
+        }],
         startDate: {
             type        : Date,
             required    : true

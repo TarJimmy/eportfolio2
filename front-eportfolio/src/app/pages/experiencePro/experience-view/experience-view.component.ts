@@ -1,11 +1,11 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, HostListener, OnInit} from '@angular/core';
 import { GlobalConstants } from "../../../common/global-constants";
 import { ExperienceProService } from "../../../services/experiencePro/experience-pro.service";
 import * as _ from 'underscore';
 import moment from 'moment';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 
-A@Component({
+@Component({
     selector    : 'app-experience-view',
     templateUrl : './experience-view.component.html',
     styleUrls   : ['./experience-view.component.less'],
@@ -26,7 +26,7 @@ A@Component({
         ])
     ]
 })
-export class ExperienceViewComponent implements OnInit {
+export class ExperienceViewComponent implements OnInit, AfterViewChecked {
     Locale;
     experiencePro           : any;
     experienceProTimeline   : any;
@@ -37,14 +37,9 @@ export class ExperienceViewComponent implements OnInit {
     screen;
     elementsToShow;
 
-    @HostListener('window:load', ['$event'])
-    onLoad(event) {
-        this.elementsToShow = document.querySelectorAll('.show-on-scroll');
-        this.showDivVisible();
-    }
-
     @HostListener('window:scroll', ['$event'])
     onWindowScroll(event) {
+        this.elementsToShow = document.querySelectorAll('.show-on-scroll');
         this.showDivVisible();
     }
 
@@ -86,11 +81,16 @@ export class ExperienceViewComponent implements OnInit {
         window.onresize = () => { this.screen = screen; };
     }
 
+    ngAfterViewChecked() {
+        this.elementsToShow = document.querySelectorAll('.show-on-scroll');
+        this.showDivVisible();
+    }
+
     private getModeGraph() : void {
         this.experienceProGraph = [];
         let maxTime = 0;
         this.experiencePro.forEach(exp => {
-            let elem = this.experienceProGraph.find(expGraph => expGraph.typeJob === exp.typeJob);
+            let elem = this.experienceProGraph.find(expGraph => expGraph.title === exp.title);
             let endDate = exp.endDate ? exp.endDate : moment();
             if (elem) {
                 elem.time += moment(endDate).diff(exp.startDate, 'days');
@@ -102,7 +102,8 @@ export class ExperienceViewComponent implements OnInit {
                     title           :   exp.title,
                     description     :   exp.description,
                     companyId       :   exp.companyId,
-                    typeJob         :   exp.typeJob,
+                    titleBar        :   exp.title == 'summer' ? this.Locale.summer : exp.companyId.title,
+                    colorBar        :   exp.title == 'summer' ? exp.title : exp.companyId.title,
                     time            :   moment(endDate).diff(exp.startDate, 'days')
                 });
                 if (maxTime < exp.time) {
@@ -135,6 +136,9 @@ export class ExperienceViewComponent implements OnInit {
     private getModeTimeline() : void {
         this.experienceProTimeline = _.sortBy(this.experiencePro, (experience) =>  {
             experience.fullDate = this.getFullDate(experience.startDate, experience.endDate);
+            if (!experience.endDate) {
+                experience.fullDate = experience.fullDate.concat(' (', this.strDiffDate(experience.startDate, moment()), ')');
+            }
             return experience.startDate.dateTime;
         }).reverse();
     }
@@ -157,22 +161,13 @@ export class ExperienceViewComponent implements OnInit {
         }
     }
 
-    public getColor(type: String) : string {
-        switch (type) {
-            case 'Agriculture':
-                return 'agricol';
-                break;
-            case 'Programmation':
-                return 'prog'
-                break;
-            case 'Concessionnaire':
-                return 'concession';
-                break;
-            case 'Métallurgie':
-                return 'usine';
+    public getColor(nameCompany: String) : string {
+        switch (nameCompany) {
+            case 'Mobiteach':
+                return 'mobi';
                 break;
             default:
-                return ''
+                return 'summer'
                 break;
         }
     }
@@ -180,7 +175,7 @@ export class ExperienceViewComponent implements OnInit {
     private getFullDate(startDate: Date, endDate: Date): string {
         if (endDate == null) {
             let word = GlobalConstants.shortLocale == 'fr' ? ' le ' : ' ';
-            return this.Locale.Since + word + moment(startDate).locale(GlobalConstants.shortLocale).format('d MMMM YYYY');
+            return this.Locale.Since + word + moment(startDate).locale(GlobalConstants.shortLocale).format('D MMMM YYYY');
         } else {
             if (moment(startDate).format('MMYYYY') == moment(endDate).format('MMYYYY')) {
                 if (GlobalConstants.shortLocale == 'fr') {
@@ -237,7 +232,7 @@ export class ExperienceViewComponent implements OnInit {
         return s.charAt(0).toUpperCase() + s.slice(1);
     }
 
-    private strDiffDate(startDate: Date, endDate: Date) : string {
+    private strDiffDate(startDate, endDate) : string {
         let strDate;
         let nbYears = moment(endDate).diff(moment(startDate), 'year');
         let nbMonth = moment(endDate).diff(moment(startDate), 'month') % 12;

@@ -14,6 +14,9 @@ import { CompanyViewComponent } from './pages/company/company-view/company-view.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SkillViewComponent } from './pages/skill/skill-view/skill-view.component';
 import {AboutViewComponent} from "./pages/about/about-view/about-view.component";
+import { ProjectViewComponent } from './pages/project/project-view/project-view.component';
+// import { MatDialogModule } from "@angular/material/dialog";
+import { ProjectDetailsComponent } from './pages/project/project-details/project-details.component';
 
 @NgModule({
     declarations: [
@@ -25,12 +28,15 @@ import {AboutViewComponent} from "./pages/about/about-view/about-view.component"
         ExperienceViewComponent,
         CompanyViewComponent,
         SkillViewComponent,
-        AboutViewComponent
+        AboutViewComponent,
+        ProjectViewComponent,
+        ProjectDetailsComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        // MatDialogModule,
         BrowserAnimationsModule,
         NgbModule
     ],

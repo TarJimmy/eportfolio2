@@ -241,10 +241,12 @@ var nodeJSId        = db.languages.findOne({title: 'nodeJS'})._id,
     cId             = db.languages.findOne({title: 'c'})._id,
     cppId           = db.languages.findOne({title: 'c++'})._id,
     pythonId        = db.languages.findOne({title: 'python'})._id,
-    htmlId          = db.languages.findOne({title: 'html'})._id;
+    htmlId          = db.languages.findOne({title: 'html'})._id,
+    mongoDBId       = db.languages.findOne({title: 'mongoDB'})._id;
+
 //Framework
 db.frameworks.insert({
-    title       :   'expressjs',
+    title       :   'expressJS',
     level       :   'intermediaire',
     type        :   ['web', 'back-end'],
     languageId  :   nodeJSId,
@@ -288,7 +290,8 @@ db.frameworks.insert({
 
 var angularId       = db.frameworks.findOne({title: 'angular'})._id,
     bootstrapId     = db.frameworks.findOne({title: 'bootstrap'})._id,
-    expressId         = db.frameworks.findOne({title: 'expressjs'})._id;
+    angularjsId     = db.frameworks.findOne({title: 'angularJS'})._id,
+    expressId       = db.frameworks.findOne({title: 'expressJS'})._id;
 
 //Award
 db.awards.insert({
@@ -300,7 +303,7 @@ var bestProjectId = db.awards.findOne()._id;
 
 //Projet
 db.projects.insert({
-    title       :   'L\'île interdie',
+    title       :   'L\'île interdite',
     description :   'Jeux de plateau l\'île interdite en local',
     languages   :   [javaId],
     ranking     :   3,
@@ -414,100 +417,93 @@ db.schoolProjects.insert({
 
 //Job
 db.jobs.insert({
-    title           :   'Saisonnier agricole',
+    title           :   'summer',
     typeContract    :   'CDD',
-    typeJob         :   'summer',
-    description     :   'Ramassage d\'abricots',
+    description     :   'SeasonalFarm',
     startDate       :   new Date('2015-07-06'),
     endDate         :   new Date('2015-07-16'),
     companyId       :   perrinId
 });
 db.jobs.insert({
-    title           :   'Saisonnier agricole',
+    title           :   'summer',
     typeContract    :   'CDD',
-    typeJob         :   'summer',
-    description     :   'Ramassage d\'abricots',
+    description     :   'SeasonalFarm',
     startDate       :   new Date('2016-07-04'),
     endDate         :   new Date('2016-07-15'),
     companyId       :   perrinId
 });
 db.jobs.insert({
-    title           :   'Saisonnier agricole',
+    title           :   'summer',
     typeContract    :   'CDD',
-    typeJob         :   'summer',
-    description     :   'Ramassage d\'abricots, de poireau et de tabac.',
+    description     :   'SeasonalFarm',
     startDate       :   new Date('2017-07-06'),
     endDate         :   new Date('2017-07-31'),
     companyId       :   gaecId
 });
 db.jobs.insert({
-    title           :   'Saisonnier agricole',
+    title           :   'summer',
     typeContract    :   'CDD',
-    typeJob         :   'summer',
-    description     :   'Ramassage d\'abricots, de poireau et de tabac.',
+    description     :   'SeasonalFarm',
     startDate       :   new Date('2017-08-21'),
     endDate         :   new Date('2017-08-31'),
     companyId       :   gaecId
 });
 db.jobs.insert({
-    title           :   'Saisonnier agricole',
+    title           :   'summer',
     typeContract    :   'CDD',
-    typeJob         :   'summer',
-    description     :   'Ramassage d\'abricots',
+    description     :   'SeasonalFarm',
     startDate       :   new Date('2018-07-04'),
     endDate         :   new Date('2018-07-22'),
     companyId       :   perrinId
 });
 db.jobs.insert({
-    title           :   'Ouvrier d\'execution batiment',
+    title           :   'summer',
     typeContract    :   'CDD',
-    typeJob         :   'summer',
-    description     :   'Pose de menuiserie alu, déchargement du véhicule, ...',
+    description     :   'ConstructionWorker',
     startDate       :   new Date('2019-07-08'),
     endDate         :   new Date('2019-07-19'),
     companyId       :   poirotId
 });
 db.jobs.insert({
-    title           :   'Laveur de voiture',
+    title           :   'summer',
     typeContract    :   'CDD',
-    typeJob         :   'summer',
-    description     :   '',
+    description     :   'CarWasher',
     startDate       :   new Date('2019-07-29'),
     endDate         :   new Date('2019-08-24'),
     companyId       :   espaceFranceAutoId
 });
 db.jobs.insert({
-    title           :   'Programmation informatique',
+    title           :   'ComputerProgramming',
     typeContract    :   'Stage',
-    typeJob         :   'webProgramming',
-    description     :   'Développement de fonctionnalités autour du projet Mobiteach',
+    description     :   'Webdeveloper',
+    environment     :   [htmlId, cssId, javascriptId, bootstrapId, angularjsId, nodeJSId, expressId, mongoDBId],
     startDate       :   new Date('2020-04-17'),
     endDate         :   new Date('2020-07-03'),
     companyId       :   mobiteachId
 });
 db.jobs.insert({
-    title           :   'Programmation informatique',
+    title           :   'ComputerProgramming',
     typeContract    :   'CDD',
-    typeJob         :   'webProgramming',
-    description     :   'Développement de fonctionnalités autour du projet Mobiteach',
+    description     :   'Webdeveloper',
+    environment     :   [htmlId, cssId, javascriptId, bootstrapId, angularjsId, nodeJSId, expressId, mongoDBId],
     startDate       :   new Date('2020-07-06'),
     endDate         :   new Date('2020-08-21'),
     companyId       :   mobiteachId
 });
 db.jobs.insert({
-    title           :   'Programmation informatique',
+    title           :   'ComputerProgramming',
     typeContract    :   'CDD',
-    typeJob         :   'webProgramming',
-    description     :   'Développement de fonctionnalités autour du projet Mobiteach',
+    description     :   'Webdeveloper',
+    environment     :   [htmlId, cssId, javascriptId, bootstrapId, angularjsId, nodeJSId, expressId, mongoDBId],
     startDate       :   new Date('2020-11-01'),
     endDate         :   new Date('2020-11-13'),
     companyId       :   mobiteachId
 });
 db.jobs.insert({
-    title           :   'Programmation informatique',
+    title           :   'ComputerProgramming',
     typeContract    :   'CDD',
-    typeJob         :   'webProgramming',
-    description     :   'Développement de fonctionnalités autour du projet Mobiteach',
+    description     :   'Webdeveloper',
+    environment     :   [htmlId, cssId, javascriptId, bootstrapId, angularjsId, nodeJSId, expressId, mongoDBId],
     startDate       :   new Date('2021-01-21'),
     companyId       :   mobiteachId
 });

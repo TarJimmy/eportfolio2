@@ -20,12 +20,15 @@ export class FormationViewComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.formationService.getAllFormation().subscribe(
-            (response) => {
+        this.formationService.getAllFormation().subscribe((response) => {
                 this.formations = response.formations;
                 this.formations = _.sortBy(this.formations, (formation) => {
-                    formation.startDate = moment(formation.startDate).locale(GlobalConstants.shortLocale).format('MMMM YYYY');
-                    if (formation.endDate) formation.endDate = moment(formation.endDate).locale(GlobalConstants.shortLocale).format('MMMM YYYY');
+                    formation.strDate = moment(formation.startDate).locale(GlobalConstants.shortLocale).format('MMMM YYYY');
+                    if (formation.endDate) {
+                        formation.strDate = formation.strDate.concat(' - ', moment(formation.endDate).locale(GlobalConstants.shortLocale).format('MMMM YYYY'));
+                    } else {
+                        formation.strDate = this.Locale.Since.concat(' ', formation.strDate);
+                    }
                     formation.image = GlobalConstants.getCompletePath(formation.image);
                     return formation.startDate.dateTime;
                 }).reverse();

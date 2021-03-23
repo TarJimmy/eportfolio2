@@ -27,6 +27,10 @@ const mongoose = require('mongoose'),
         stars: {
             type        : Number,
             required    : false
+        },
+        description: {
+            type        : String,
+            required    : false
         }
     });
 

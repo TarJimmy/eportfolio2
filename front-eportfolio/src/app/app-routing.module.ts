@@ -7,10 +7,11 @@ import { ExperienceViewComponent } from "./pages/experiencePro/experience-view/e
 import {CompanyViewComponent} from "./pages/company/company-view/company-view.component";
 import {SkillViewComponent} from "./pages/skill/skill-view/skill-view.component";
 import {AboutViewComponent} from "./pages/about/about-view/about-view.component";
+import {ProjectViewComponent} from "./pages/project/project-view/project-view.component";
 const routes: Routes = [
     {
         path        :   '',
-        component   :   DashboardViewComponent
+        component   :   ExperienceViewComponent
     },
     {
         path        :   'formations',
@@ -31,6 +32,10 @@ const routes: Routes = [
     {
         path        :   'skills',
         component   :   SkillViewComponent
+    },
+    {
+        path        :   'projects',
+        component   :   ProjectViewComponent
     },
     {
         path        :   'not-found',

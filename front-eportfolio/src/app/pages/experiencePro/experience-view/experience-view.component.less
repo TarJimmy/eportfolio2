@@ -159,6 +159,7 @@
 
 
     .experience-timeline {
+        margin-bottom: 100px;
         padding-top: 30px;
         .line-scroll {
             position: absolute;
@@ -207,16 +208,16 @@
                 margin-left: -65%;
             }
 
-            &.agricol {
+            &.summer {
                 .experience-info {
-                    border-color: @mainGreen;
+                    border-color: @mainYellow;
                 }
                 .experience-bottom {
-                    background-color: @mainGreen;
+                    background-color: @mainYellow;
                 }
             }
 
-            &.prog {
+            &.mobi {
                 .experience-info {
                     border-color: @mainBlue;
                 }
@@ -225,26 +226,9 @@
                 }
             }
 
-            &.usine {
-                .experience-info {
-                    border-color: @halfDarkerGrey;
-                }
-                .experience-bottom {
-                    background-color: @halfDarkerGrey;
-                }
-            }
-
-            &.concession {
-                .experience-info {
-                    border-color: @darkBlue;
-                }
-                .experience-bottom {
-                    background-color: @darkBlue;
-                }
-            }
             .experience-info {
                 width: @width;
-                height: 170px;
+                height: 190px;
                 border-radius: 20px;
                 border: 4px solid;
                 margin: auto;
@@ -268,10 +252,14 @@
                 }
 
                 .experience-description {
-                    font-size: 15px;
+                    font-size: 18px;
                     margin-bottom: 3px;
+                    text-decoration: underline;
                 }
 
+                .experience-environment {
+                    font-size: 14px;
+                }
                 .experience-date {
                     font-size: 17px;
                 }
@@ -296,7 +284,7 @@
                 width: 50px;
                 height: 50px;
                 border-radius: 50px;
-                top: 55px;
+                top: 65px;
                 background-color: @colorLine;
                 text-align: center;
                 svg {
@@ -328,6 +316,7 @@
             }
 
             .theme {
+                padding-top: 2px;
                 font-size: 22px;
                 cursor: default;
             }
@@ -340,7 +329,7 @@
                     background-color: @mainYellow;
                 }
 
-                &.webProgramming {
+                &.mobiteach {
                     background-color: @mainBlue;
                 }
 
@@ -444,6 +433,25 @@
             }
         }
     }
+    .is-load {
+        opacity: 1;
+        max-width: 600px;
+        width: 90%;
+        will-change: transform, opacity;
+        position: absolute;
+
+        &.left {
+            -webkit-animation: bunderLeft 1.2s 0s forwards;
+            -moz-animation: bunderLeft 1.2s 0s forwards;
+            animation: bunderLeft 1.2s 0s forwards;
+        }
+
+        &:not(.left) {
+            -webkit-animation: bunderRight 1.2s 0s forwards;
+            -moz-animation: bunderRight 1.2s 0s forwards;
+            animation: bunderRight 1.2s 0s forwards;
+        }
+    }
 
     @keyframes show-bar-content {
         from {
@@ -534,6 +542,71 @@
             height: 100%;
         }
     }
+    @keyframes bunderRight {
+        0% {
+            margin-left: -350%;
+        }
+        100% {
+            margin-left: -65%;
+        }
+    }
+    @-webkit-keyframes bunderRight {
+        0% {
+            margin-left: -350%;
+        }
+        100% {
+            margin-left: -65%;
+        }
+    }
+    @-moz-keyframes bunderRight {
+        0% {
+            margin-left: -350%;
+        }
+        100% {
+            margin-left: -65%;
+        }
+    }
+    @-o-keyframes bunderRight {
+        0% {
+            margin-left: -350%;
+        }
+        100% {
+            margin-left: -65%;
+        }
+    }
+
+    @keyframes bunderLeft {
+        0% {
+            margin-left: 350%;
+        }
+        100% {
+            margin-left: 65%;
+        }
+    }
+    @-webkit-keyframes bunderLeft {
+        0% {
+            margin-left: 350%;
+        }
+        100% {
+            margin-left: 65%;
+        }
+    }
+    @-moz-keyframes bunderLeft {
+        0% {
+            margin-left: 350%;
+        }
+        100% {
+            margin-left: 65%;
+        }
+    }
+    @-o-keyframes bunderLeft {
+        0% {
+            margin-left: 350%;
+        }
+        100% {
+            margin-left: 65%;
+        }
+    }
 
     @media screen {
         @media (max-width: 850px) {
@@ -564,42 +637,5 @@
                 transform: scale(0.6) translate(-85%, -790px);
             }
         }
-    }
-}
-.is-load {
-    opacity: 1;
-    max-width: 600px;
-    width: 90%;
-    will-change: transform, opacity;
-    position: absolute;
-
-    &.left {
-        -webkit-animation: bunderLeft 1.2s 0s forwards;
-        -moz-animation: bunderLeft 1.2s 0s forwards;
-        animation: bunderLeft 1.2s 0s forwards;
-    }
-
-    &:not(.left) {
-        -webkit-animation: bunderRight 1.2s 0s forwards;
-        -moz-animation: bunderRight 1.2s 0s forwards;
-        animation: bunderRight 1.2s 0s forwards;
-    }
-}
-
-@keyframes bunderRight {
-    0% {
-        margin-left: -350%;
-    }
-    100% {
-        margin-left: -65%;
-    }
-}
-
-@keyframes bunderLeft {
-    0% {
-        margin-left: 350%;
-    }
-    100% {
-        margin-left: 65%;
     }
 }
