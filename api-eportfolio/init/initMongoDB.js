@@ -375,7 +375,7 @@ db.projects.insert({
     type        :   'school'
 });
 
-var ileInterditeId      = db.projects.findOne({title: 'L\'île interdie'})._id,
+var ileInterditeId      = db.projects.findOne({title: 'L\'île interdite'})._id,
     eportfolioId        = db.projects.findOne({title: 'E-portfolio'})._id,
     applicationWeb      = db.projects.findOne({title: 'Application web de management de club sportif'})._id,
     armId               = db.projects.findOne({title: 'Simulateur ARM'})._id,

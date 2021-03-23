@@ -1,0 +1,181 @@
+@import "../../../mixin";
+
+.page-projects {
+    .project-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .project-list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+
+            h2 {
+                width: calc(100% - 30px);
+                margin: 10px 30px;
+                color: @halfDarkerGrey;
+                border-bottom: 2px solid @halfDarkerGrey;
+                padding-bottom: 8px;
+            }
+            .project-item {
+                width: 300px;
+                height: 250px;
+                border-radius: 15px;
+                margin: 30px 0;
+                text-align: center;
+                background-color: @lightGrey;
+                color: @halfDarkerGrey;
+                position: relative;
+
+                &:hover {
+                    .on-hover {
+                        display: block;
+                    }
+                    .hover-details {
+                        display: flex;
+                    }
+                }
+
+                p {
+                    padding: 0 15px;
+                }
+                h3 {
+                    font-size: 18px;
+                    margin: 20px 15px;
+                    padding-bottom: 10px;
+                    font-weight: 600;
+                    border-bottom: 2px solid @halfDarkerGrey;
+                }
+
+                h4 {
+                    padding-left: 15px;
+                    text-align: left;
+                    color: @mainBlue;
+                    font-size: 17px;
+                    &:hover {
+                        text-decoration: underline @mainBlue;
+                        color: @mainBlue;
+                    }
+                }
+
+                &:first-child {
+                    color: blue;
+                }
+
+                &.perso {
+                    background-color: @lightGrey;
+                    color: @halfDarkerGrey;
+                }
+
+                &.pro {
+                    background-color: @lightGrey;
+                    color: @halfDarkerGrey;
+                }
+
+                &.school {
+                    color: @halfDarkerGrey;
+                    background-color: @lightGrey;
+                }
+                .hover-details {
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    border-radius: 0 15px 0 15px;
+                    background-color: @halfDarkerGrey;
+                    color: white;
+                    width: 45px;
+                    height: 45px;
+                    opacity: 0.9;
+                    -webkit-animation: hover-show 1s 0s;
+                    -moz-animation: hover-show 1s 0s;
+                    animation: hover-show 1s 0s;
+                    cursor: pointer;
+                    svg {
+                        font-size: 23px;
+                    }
+                }
+                .on-hover {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    border-radius: 0 0 15px 15px;
+                    width: 100%;
+                    display: none;
+                    opacity: 0.9;
+                    background-color: @halfDarkerGrey;
+                    color: white;
+                    -webkit-animation: hover-show 1s 0s;
+                    -moz-animation: hover-show 1s 0s;
+                    animation: hover-show 1s 0s;
+
+                    .on-hover-content {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        ul {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                            &:first-child {
+                                border-right: 1px solid @halfDarkerGrey;
+                            }
+
+                            li {
+                                text-align: left;
+                                text-transform: capitalize;
+                                &:nth-child(n + 2) {
+                                    padding-left: 15px;
+                                }
+                            }
+                        }
+                        .separator {
+                            min-height: 100%;
+                            width: 2px;
+                            background-color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @keyframes hover-show {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0.9;
+        }
+    }
+    @-webkit-keyframes hover-show {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0.9;
+        }
+    }
+
+    @-moz-keyframes hover-show {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0.9;
+        }
+    }
+
+    @-o-keyframes hover-show {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0.9;
+        }
+    }
+}

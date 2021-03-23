@@ -1,0 +1,35 @@
+<div class="page-projects">
+    <h1 class="page-title">
+        <i class="fas fa-laptop-code"></i>
+        {{Locale.MyProjects}}
+    </h1>
+    <div class="project-content">
+        <section class="project-list" *ngFor="let listProjectByType of projects;">
+            <h2 [textContent]="Locale[listProjectByType.type]"></h2>
+            <section *ngFor="let project of listProjectByType.projects"
+                     class="project-item"
+                     [ngClass]="project.type"
+            >
+                <h3 [textContent]="project.title"></h3>
+                <a *ngIf="project.awardId" [href]="project.awardId.image" target="_blank"><h4 [textContent]="project.awardId.title"></h4></a>
+                <p [textContent]="project.description"></p>
+<!--                <a (click)="openDetails(project._id)" class="hover-details">-->
+<!--                    <i class="fas fa-search"></i>-->
+<!--                </a>-->
+                <div class="on-hover">
+                    <section class="on-hover-content">
+                            <ul>
+                                <li *ngIf="project.languages.length > 1" [textContent]="Locale.Languages + ' :'"></li>
+                                <li *ngFor="let language of project.languages" [textContent]="language.title"></li>
+                            </ul>
+                            <div *ngIf="project.frameworks.length > 0" class="separator"></div>
+                            <ul *ngIf="project.frameworks.length > 0">
+                                <li [textContent]="Locale.Frameworks + ' :'"></li>
+                                <li *ngFor="let framework of project.frameworks" [textContent]="framework.title"></li>
+                            </ul>
+                    </section>
+                </div>
+            </section>
+        </section>
+    </div>
+</div>
